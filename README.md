@@ -1,7 +1,6 @@
 # TaskTracker
 This is based on this project https://roadmap.sh/projects/task-tracker.
 CLI Python app that will track your tasks.
-This project is based on the following website: https://roadmap.sh/projects/task-tracker
 
 The purpose of this project is too get familiar with Python programming. I took a course on C, javascript and Python and programming language in 2020. I have not dabbled with a programming language since then. I also have knowledge of HTML/CSS/Javascript. I enjoy creating projects rather than learning from a tutorial. I feel like projects help you search for the answer your looking for and helps you think like a programmer. I plan to improve my projects once I get more knowledge and familiar with the language. As for now this is my first project. 
 
