@@ -7,7 +7,7 @@ The purpose of this project is too get familiar with Python programming. I took 
 
 In this project I learned how to interact with a JSON file with python. The purpose of this project is to allow a user to add, update, and delete a task. The program will save the task into a JSON file. The program can then update or delete the task from the JSON file. Each task will have a unique ID and it will have the time it was created or updated. It also has the status of each task. 
 
-**Instructions**
+# Instructions
 
 **Adding a new task**
 task-cli add "Buy groceries"
