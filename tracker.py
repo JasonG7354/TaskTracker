@@ -12,10 +12,7 @@ with open('data.json', "r") as f:
 #idList is where all the unique IDs in the json file will be listed. 
 idList = []
 #This is the list of status for each task. 
-statusTask = ["done", "todo", "in-progress"]
-
-
-cliArgs = len(sys.argv)
+statusTask = ["todo","done", "in-progress"]
 
 
 for i in sys.argv:
@@ -26,7 +23,7 @@ for i in sys.argv:
             idList.append(1)
             data.append({"id" : 1,
                      "description" : sys.argv[2],
-                     "status" : "null",
+                     "status" : statusTask[0],
                      "createdAt" : str(currentDateTime),
                      "updatedAt" : "null"})
             print(f"Task added successfully (ID: {1})")
@@ -46,40 +43,54 @@ for i in sys.argv:
             #Finally this will append it to the data varaible which is the json data.         
             data.append({"id" : y,
                         "description" : sys.argv[2],
-                        "status" : "null",
+                        "status" : statusTask[0],
                         "createdAt" : str(currentDateTime),
                         "updatedAt" : "null"})
             print(f"Task added successfully (ID: {y})")
-    
+    #This will find the id that the user wants to update then it will update the description and update time. 
+    elif i == "update":
+        for unId in data:
+            print(unId["id"])
+            if unId["id"] == int(sys.argv[2]):
+                unId["description"] = sys.argv[3]    
+                unId["updatedAt"] = str(currentDateTime)   
+    #This will find the id that the user wants to delete. Then it will delete it fomr json  list. 
+    elif i == "delete":
+        j = 0
+        for unId in data:
+            if unId["id"] == int(sys.argv[2]):
+                del data[j]
+            else:
+                j += 1
+    #This will mark status in progress if it mathces the ID. Mark-done is very similar. 
+    elif i == "mark-in-progress":
+        j = 0
+        for unId in data:
+            if unId["id"] == int(sys.argv[2]):
+                 unId["status"] = statusTask[2]
+            else:
+                j += 1
+    elif i == "mark-done":
+        j = 0
+        for unId in data:
+            if unId["id"] == int(sys.argv[2]):
+                 unId["status"] = statusTask[1]
+            else:
+                j += 1
+    #This will either list all tasks or just list the ones that are done, todo or in-progress. 
+    elif i == "list":
+        if len(sys.argv) == 2:
+            for unId in data:
+                print(unId)
+        else:
+            for unId in data:
+                if unId["status"] == sys.argv[2]:
+                    print(unId)
 
+
+                
 #Next this will write that new json data to data.json. 
 
 with open("data.json", "w") as f:
     json.dump(data, f, indent=4)
 
-
-
-
-'''
-print (mainList)
-
-
-InputTask = input('Enter your task:')
-InitialTaskList = [InputTask]
-
-addinput = input("Enter your input")
-InitialTaskList.append(addinput)
-
-addinput = input("Enter your input")
-InitialTaskList.append(addinput)
-
-deleteTask = int(input("Which task would you like to delete?"))
-
-InitialTaskList.pop(deleteTask)
-
-editTask = int(input("Which task would you like to update?"))
-editTaskValue = input("Enter your new updated task")
-InitialTaskList[editTask] = editTaskValue
-
-print(InitialTaskList)
-'''
